@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message Me - Your Beautiful Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>Your Name</h1>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="message.html">Message</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="message">
+            <div class="container">
+                <h2>Message Me</h2>
+                <p>If you'd like to get in touch with me, please use the contact form below. I'll get back to you as soon as possible.</p>
+                <form class="form-container" action="contact.php" method="POST" onsubmit="return validateForm()">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<div class="g-recaptcha" data-sitekey="6Lfto2goAAAAAHq7vjBRXSJnAzYGzgltHLSEWWuU"></div>
+   <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </section>
+        <script>
+function validateForm() {
+    var name = document.forms["contactForm"]["name"].value;
+    var email = document.forms["contactForm"]["email"].value;
+    var message = document.forms["contactForm"]["message"].value;
+
+    if (name === "" || email === "" || message === "") {
+        alert("All fields must be filled out");
+        return false;
+    }
+
+    // Add more validation for the email field if needed
+
+    return true;
+}
+</script>
+
+    </main>
+    <footer>
+        <div class="container">
+            &copy; 2023 Your Name | Follow me on <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>
